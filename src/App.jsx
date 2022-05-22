@@ -2,41 +2,41 @@ import "./styles.css";
 import React, { useState } from "react";
 
 export const App = () => {
-  const [inCompleateTodos, setIncCompleateTodos] = useState([]);
-  const [compleateTodos, setCompleateTodos] = useState([]);
+  const [inCompleteTodos, setIncCompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
   const [todoText, setTodoText] = useState("");
 
   const onChangeText = (event) => setTodoText(event.target.value);
 
   const onClickAdd = () => {
     if (todoText === "") return;
-    const newTodos = [...inCompleateTodos, todoText];
-    setIncCompleateTodos(newTodos);
+    const newTodos = [...inCompleteTodos, todoText];
+    setIncCompleteTodos(newTodos);
     setTodoText("");
   };
 
   const onClickDelete = (index) => {
-    const newTodos = [...inCompleateTodos];
+    const newTodos = [...inCompleteTodos];
     newTodos.splice(index, 1);
-    setIncCompleateTodos(newTodos);
+    setIncCompleteTodos(newTodos);
   };
 
   const onClickCompleate = (index) => {
-    const newInCompleateTodos = [...inCompleateTodos];
-    newInCompleateTodos.splice(index, 1);
-    setIncCompleateTodos(newInCompleateTodos);
+    const newInCompleteTodos = [...inCompleteTodos];
+    newInCompleteTodos.splice(index, 1);
+    setIncCompleteTodos(newInCompleteTodos);
 
-    const newTodos = [...compleateTodos, inCompleateTodos[index]];
-    setCompleateTodos(newTodos);
+    const newTodos = [...completeTodos, inCompleteTodos[index]];
+    setCompleteTodos(newTodos);
   };
 
   const onClickBack = (index) => {
-    const newCompleateTodos = [...compleateTodos];
-    newCompleateTodos.splice(index, 1);
-    setCompleateTodos(newCompleateTodos);
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+    setCompleteTodos(newCompleteTodos);
 
-    const newTodos = [...inCompleateTodos, compleateTodos[index]];
-    setIncCompleateTodos(newTodos);
+    const newTodos = [...inCompleteTodos, completeTodos[index]];
+    setIncCompleteTodos(newTodos);
   };
   return (
     <>
@@ -51,7 +51,7 @@ export const App = () => {
       <div className="incompleate-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          {inCompleateTodos.map((todo, index) => {
+          {inCompleteTodos.map((todo, index) => {
             return (
               <li key={todo} className="list-row">
                 <p>{todo}</p>
@@ -65,7 +65,7 @@ export const App = () => {
       <div className="compleate-area">
         <p className="title">完了のTODO</p>
         <ul>
-          {compleateTodos.map((todo, index) => {
+          {completeTodos.map((todo, index) => {
             return (
               <li key={todo} className="list-row">
                 <p>{todo}</p>
